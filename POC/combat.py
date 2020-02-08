@@ -46,7 +46,7 @@ def initiative(dexterity):
 
     return roll(f'1d20+{str(dexterity)}')
 
-def attach(modifier, ac):
+def attack(modifier, ac):
     """
     This function is used to determine attack rolls
     """

@@ -22,9 +22,9 @@ monsterinfo = {
     'challengerating': '1',
     'xp': 200,
     'traits': ['Brute', 'Surpise Attace'],
-    'actions': [{'morning star':{'range':'melee','attak':4,'reach':5,'target':'one','hit':11,'type':'piercing'}},
-                {'javelin':{'range':'melee','attack':4,'reach':5,'target':'one','hit':9,'type':'piercing'}},
-                {'javelin':{'range':'ranged','attack':4,'reach':30,'target':'one','hit':5,'type':'piercing'}}]
+    'actions': {'morning star':{'range':'melee','attack':4,'reach':5,'target':'one','hit':11,'type':'piercing'},
+                'javelin':{'range':'ranged','attack':4,'reach':30,'target':'one','hit':5,'type':'piercing'}},
+    'perception': 10
 }
 
 monster = Monster(abilities, **monsterinfo)
