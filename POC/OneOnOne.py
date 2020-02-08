@@ -11,19 +11,19 @@ suprises = choice(['player','monster',None])
 
 if suprises:
     target = 'player' if suprises == 'monster' else 'monster'
-    print(f'{globals()[suprises].name} has a chance to suprise {globals()[target].name}.')
+    print(f'{locals()[suprises].name} has a chance to suprise {locals()[target].name}.')
     if suprises == 'monster':
         bonus = 0
     else:
         bonus = player.abilitymod(player.ability['Dexterity']) + player.proficencybonus if 'Stealth' in player.skills else player.abilitymod(player.ability['Dexterity'])
-    surpised = combat.surprise(globals()[suprises].abilitymod(globals()[suprises].ability['Dexterity'] + bonus),10 + globals()[target].abilitymod(globals()[target].ability['Dexterity']))
+    surpised = combat.surprise(locals()[suprises].abilitymod(locals()[suprises].ability['Dexterity'] + bonus),10 + locals()[target].abilitymod(locals()[target].ability['Dexterity']))
 else:
     surpised = None
 suprises = 'player'
 target = 'monster'
 surpised = True
 if surpised:
-    print(f'{globals()[target].name} has been surprised by {globals()[suprises].name}.')
+    print(f'{locals()[target].name} has been surprised by {locals()[suprises].name}.')
     if suprises == 'player':
         print('With the element of suprise you get one free action. What will you do.')
         action = ''
@@ -34,8 +34,8 @@ if surpised:
         if action == 'A':
             weapons = player.combat['Weapons']
             for weapon in weapons:
-                for k,v in weapon.items():
-                    options.append(k)
+                for item, _ in weapon.items():
+                    options.append(item)
         else:
             options = player.spellsknown['1']
         print('Select an option')
@@ -46,4 +46,4 @@ if surpised:
             selection = input('?')
 
 if suprises and not surpised:
-    print(f'{globals()[target].name} is ready for combat and prepares to face {globals()[suprises].name}!')
+    print(f'{locals()[target].name} is ready for combat and prepares to face {locals()[suprises].name}!')
