@@ -1,3 +1,4 @@
+import re
 from random import choice
 from dice import roll
 
@@ -54,3 +55,15 @@ def attack(modifier, ac):
     if attackroll > ac:
         return True
     return False
+    
+def supriseattack(traits):
+    
+    """
+    This function is used to determine if a monster has the surprise attack trait and how much extra damage they call do
+    """
+    
+    reg = r'^\bSurprise\b'
+    for trait in traits:
+    	if re.match(reg, trait) is not None:
+    		return trait.split('/')[1]
+    return 0

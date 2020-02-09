@@ -21,9 +21,9 @@ monsterinfo = {
     'conditionimmunities': [],
     'challengerating': '1',
     'xp': 200,
-    'traits': ['Brute', 'Surpise Attace'],
-    'actions': {'morning star':{'range':'melee','attack':4,'reach':5,'target':'one','hit':11,'type':'piercing'},
-                'javelin':{'range':'ranged','attack':4,'reach':30,'target':'one','hit':5,'type':'piercing'}},
+    'traits': ['Brute', 'Surprise Attack/2d6'],
+    'actions': {'morning star':{'range':'melee','attack':4,'reach':5,'target':'one','hit':'2d8+2','type':'piercing'},
+                'javelin':{'range':'ranged','attack':4,'reach':30,'target':'one','hit':'2d6+2','type':'piercing'}},
     'perception': 10
 }
 

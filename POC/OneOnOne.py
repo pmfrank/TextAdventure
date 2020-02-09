@@ -58,12 +58,16 @@ if surpised:
         		else:
         				print('Miss')
     else:
-        print(f'You have been surprised as {monster.name} attacks you.')
+        print(f'With the element of surprise {monster.name} gets a free attack against you.')
         sleep(1)
         
         weapon = monster.combat['actions']['morning star']
         if combat.attack(weapon['attack'], player.combat['Armor Class']):
-            damage = weapon['hit']
+            damage = roll(weapon['hit'])
+            bonus = combat.supriseattack(monster.traits)
+            if bonus != 0:
+            	print(f'{monster.name} has surprise attack.')
+            	damage = damage + roll(bonus)
             print(f'You where hit by {monster.name} for {damage} points of damange.')
             sleep(1)
         else:
@@ -71,3 +75,5 @@ if surpised:
             
 if suprises and not surpised:
     print(f'{locals()[target].name} is ready for combat and prepares to face {locals()[suprises].name}!')
+    
+
