@@ -12,6 +12,8 @@ sleep(1)
 
 suprises = choice(['player','monster',None])
 
+player.combat['Hit Points'] = 27
+
 
 if suprises:
     target = 'player' if suprises == 'monster' else 'monster'
@@ -65,14 +67,19 @@ if surpised:
                 c = conn.cursor()
                 c.execute(f'SELECT * FROM spells WHERE name="{selection}"')
                 spell = c.fetchone()
-            if currentslots[spell[level]] == 0:
+            if player.currentslots[str(spell['level'])] == 0:
                 print(f'You have no slots left of level {spell["level"]}.')
             print(f'You have cast {spell["name"]}.')
             sleep(1)
             if spell['type'] == 'healing':
                 healing = roll(spell['dice']) + player.abilitymod(player.ability['Wisdom'])
                 print(f'Your spell restores {healing} points of damage.')
-                if player.combat['hitpoints'] # Use min function to limit hit points to maximum for healing
+                if player.combat['Hit Points'] < player.combat['Max HP']:
+                    print(f'Current Hp: {player.combat["Hit Points"]}')
+                    player.combat['Hit Points'] = player.combat['Hit Points'] + healing
+                    print(f'Current Hp: {player.combat["Hit Points"]}')
+                    player.combat['Hit Points'] = min(player.combat['Hit Points'], player.combat['Max HP'])
+                    print(f'Current Hp: {player.combat["Hit Points"]}')
             elif spell['type'] == 'combat':
                 damage = roll(spell['dice'])
                 print(f'Your spell deals {damage} points of damage.')

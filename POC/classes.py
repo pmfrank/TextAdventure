@@ -14,6 +14,7 @@ class Entity():
         self.combat = {
             "Armor Class": int(attributes['armorclass']),
             "Hit Points": int(attributes['hitpoints']),
+            "Max HP": int(attributes['maxhitpoints']),
             "Hit Dice": str(attributes['hitdice']),
             "Speed": int(attributes['speed'])
         }
@@ -42,6 +43,7 @@ class Player(Entity):
         self.features = list(playerinfo['features'])
         self.attacks = list(playerinfo['attacks'])
         self.spellslots = dict(playerinfo['spellslots'])
+        self.currentslots = dict(playerinfo['currentslots'])
         self.spellsknown = dict(playerinfo['spellsknown'])
         self.gear = list(playerinfo['gear'])
         self.consumables = dict(playerinfo['consumables'])
