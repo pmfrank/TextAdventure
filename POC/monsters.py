@@ -9,6 +9,7 @@ abilities = {
     'charisma': 9,
     'armorclass': 16,
     'hitpoints':27,
+    'maxhitpoints': 27,
     'hitdice': '5d8+5',
     'speed': 30,
     'language': ['Common','Goblin'],
